@@ -2,36 +2,46 @@ import java.util.ArrayList;
 
 public class Grades {
 
-    private String subject;
-    private int grade;
-
-    public Grades(String subject, int grade) {
-        this.subject = subject;
-        this.grade = grade;;
-    }
 
     public Grades() {
     }
 
-    ArrayList<Grades> list = new ArrayList<>();
+    ArrayList<String> subjects = new ArrayList<>();
+    ArrayList<String> grades = new ArrayList<>();
 
     public void addSubject(String subject)
     {
-        list.add(subject, grade);
+        subjects.add(subject);
+        grades.add("-");
     }
 
     public void dropSubject(String subject)
     {
-        list.remove(subject);
+        subjects.remove(subject);
+        for (int i = 0; i < subjects.size(); i++)
+        {
+            if(subjects.get(i) == subject)
+            {
+                grades.remove(i);
+            }
+        }
     }
 
     public String getGrades()
     {
         String ret = "";
 
-        for (int i = 0; i < list.size(); i++)
+        for (int i = 0; i < subjects.size(); i++)
         {
-                ret += list.get(i)+"\n";
+            if (i == subjects.size()-1)
+            {
+                ret += subjects.get(i)+" "+grades.get(i);
+            }
+
+            else
+            {
+                ret += subjects.get(i)+" "+grades.get(i)+"\n";
+            }
         }
 
         return ret;

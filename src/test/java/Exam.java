@@ -6,11 +6,11 @@ public class Exam extends Grades
 
     public void registGradeToSubject(String subject, int grade)
     {
-        for (int i = 0; i < list.size(); i++)
+        for (int i = 0; i < subjects.size(); i++)
         {
-            if(list.get(i).getGrades() == subject)
+            if(subjects.get(i).equals(subject))
             {
-                list.add(subject, grade);
+                grades.set(i, Integer.toString(grade));
             }
         }
     }
